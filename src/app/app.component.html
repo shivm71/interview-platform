@@ -1,0 +1,170 @@
+<ul>
+    <li><img style="max-width: 180px; max-height: 50px; float: left;" src="images/images.jpeg" id="logo"/></li>
+    <li class="login"><a class="active" href="#login">Login</a></li>
+</ul>
+<div class=" outer-box border">
+    <div class="row mt-2">
+        <div class="col-md-1 text-center" style="float: left;">
+            <img src="https://www.events10x.com/Images/10X%20Favicon-01.jpg" height="48">
+        </div>
+        <div class="col-md-9 text-center">
+            <h3>Candidate Assessment Report</h3> 
+        </div>
+        <div class="col-md-2 text-center">
+            <a type="button" class="btn btn-warning" href="javascript:window.print()">Print Report / Save as PDF</a>
+        </div>
+
+
+    </div>
+    <hr>
+    <div class="row mb-2">
+        <div class="col-md-4 text-center">
+            <h5>
+                <a class="btn btn-sm btn-secondary"
+                   [href]="response.metadata.resumeUrl"
+                   target="_blank"><span class="im-cloud-download fa-lg"></span> CV</a>
+                 {{response.metadata.candidateInfo.name}} </h5>
+            CNH: {{response.metadata.role}}
+        </div>
+        <div class="col-md-4 text-center">
+            <h5 [ngClass]="{'btn-outline-success': response.metadata.result.toUpperCase() === 'SELECTED','btn-outline-danger': response.metadata.result.toUpperCase() === 'REJECTED'}">{{response.metadata.result}}</h5>
+            <a [href]="response.metadata.recording"
+               target="_blank">Recorded Video</a>
+        </div>
+        <div class="col-md-4 text-center"><h5>{{response.metadata.interviewTimeStamp | date}}</h5><b>Report sent</b> : By {{response.metadata.sentBy}}</div>
+    </div>
+    <div class="row my-2 fontterm ">
+        <div class="col-md-12 btn-dark full-width-div g-0"><h5 class="text-center">Ratings</h5></div>
+    </div>
+    <div class="col-md-11.5 pl-4 border-right text-center"
+         style=" margin: 10px; padding: 10px; background-color:#E7E4DC;">
+        <div class="row my-2 text-secondary">
+            <div class="col-4 font-weight-bold">Skill</div>
+            <div class="col-4">Rating (Out of 5)</div>
+            <div class="col-4">5-star Rating</div>
+        </div>
+        <hr>
+        <ng-container *ngFor="let skill of response.skillRate.individualRating">
+            <div class="row my-2">
+                <div class="col-4 font-weight-bold">{{skill.skill}}</div>
+                <div class="col-4">({{skill.rating}}/5) Average</div>
+                <div class="col-4">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                </div>
+            </div>
+        </ng-container>
+        <hr>
+
+        <!--        <div class="row my-2">-->
+<!--            <div class="col-4 font-weight-bold">Client Handling</div>-->
+<!--            <div class="col-4">Not Applicable</div>-->
+<!--            <div class="col-4">-->
+<!--                <span class="fa fa-star "></span>-->
+<!--                <span class="fa fa-star "></span>-->
+<!--                <span class="fa fa-star "></span>-->
+<!--                <span class="fa fa-star "></span>-->
+<!--                <span class="fa fa-star"></span>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="row my-2">-->
+<!--            <div class="col-4 font-weight-bold">Soft Skills</div>-->
+<!--            <div class="col-4">(6/10) Average</div>-->
+<!--            <div class="col-4">-->
+<!--                <span class="fa fa-star checked"></span>-->
+<!--                <span class="fa fa-star checked"></span>-->
+<!--                <span class="fa fa-star checked"></span>-->
+<!--                <span class="fa fa-star "></span>-->
+<!--                <span class="fa fa-star"></span>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <hr>-->
+
+
+        <div class="row my-2 no-gutters border-primary big text-primary bg-grad py-1">
+            <div class="col-4 font-weight-bold">OVERALL</div>
+            <div class="col-4">({{response.skillRate.overallrating}}/5) Above Average</div>
+            <div class="col-4">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star "></span>
+            </div>
+        </div>
+    </div>
+    <div class="row my-2 fontterm ">
+        <div class="col-md-12 btn-dark full-width-div g-0"><h5 class="text-center">Detailed feedback</h5></div>
+    </div>
+    <div class="row mb-2 pl-3">
+        <div class="col-md-8" style=" margin: 10px; padding: 10px;">
+            <div style="white-space: pre-wrap"><b>For Mandatory Skills</b>
+                Highlights -
+                1- He knows about some of basic JS fundamentals like event loop and browser API's.
+                2- He was average in problem solving and partially able to solve the coding question.
+                3- He worked on performance issues related to react application and decent in react basic knowledge.
+
+                Lowlights -
+                1- He was not able to complete the coding question and need work on problem solving speed and logical
+                implementation.
+                2- He was average in JS fundamentals and not clear on scoping , inheritance, design patterns and other
+                basic java script concepts.
+                3- He need work on advanced react concepts like, useMemo and useCallback hooks.
+                4- He was average in browser related concepts too.
+            </div>
+            <div style="white-space: pre-wrap"><b>For Good To Have Skills</b>
+                He worked on Node js and PHP in some of the projects.
+            </div>
+            <div style="white-space: pre-wrap"><b>For Soft Skills</b>
+                He need to work on communication and need to be proactive in discussion.
+            </div>
+
+            <div style="white-space: pre-wrap"><b>Coding Question And Feedback</b>
+                He was not able to solve DS exercise based on JS.
+                He was not able to solve coding questions based on JS fundamentals.
+            </div>
+            <div style="white-space: pre-wrap"><b>Recommendation And Other Strengths</b>
+                He is rejected because of his average JavaScript and coding skills.
+                He also need work in advanced concepts of React and browser stuff.
+            </div>
+        </div>
+        <div class="col-md-3"><a data-fslightbox="" href="./pics/iv_143768_rhm1wb3l2z6hl1tu.png" target="_blank"
+                                 style="padding: 50px;"> <img src="../assets/images/interviewee.jpeg" width="100%"
+                                                              alt="Not loaded"></a>
+        </div>
+    </div>
+    <div class="row my-2 fontterm ">
+        <div class="col-md-12 btn-dark full-width-div g-0"><h5 class="text-center">Basic Information</h5></div>
+    </div>
+    <div class="row mb-2 pl-3" style="margin: 10px; padding: 10px;">
+        <div class="col-md-5"><b>Candidate</b><br>{{response.metadata.candidateInfo.name}}<br>{{response.metadata.candidateInfo.email}}<br>{{response.metadata.candidateInfo.contact}}
+        </div>
+        <div class="col-md-4"><b>Status</b><br>Report sent<br>Coding- Mandatory<br>First round, Video</div>
+        <div class="col-md-3"><b>Conference</b><br>Amit <br><br></div>
+    </div>
+    <div class="row mb-2 pl-3" style="margin: 10px; padding: 10px;">
+        <div class="col-md-12"><b>Skills to assess</b>: React ; HTML ; Javascript: ; Coding ; browser concepts ;
+        </div>
+    </div>
+    <div class="row mb-2 pl-3" style="margin: 10px; padding: 10px;">
+        <div class="col-md-8"><b>Mandatory skills</b><br>Very Good in React JS
+            Sound knowledge in Java script
+            HTML, CSS
+            Rating for coding skills should be separately covered
+            Browser Concept knowledge
+        </div>
+        <div class="col-md-4"><b>Good to have skills</b><br><br><b>Other requirements</b><br></div>
+    </div>
+    <div class="row my-2 fontterm ">
+        <div class="col-md-12 btn-dark full-width-div g-0"><h5 class="text-center">Coding skills</h5></div>
+    </div>
+    <code class="reportcode p-2" id="sCode"
+          style="display:block; white-space:pre-wrap; background-color:#E7E4DC; margin: 10px; padding: 10px;">
+        {{code}}
+    </code>
+
+
+</div>
